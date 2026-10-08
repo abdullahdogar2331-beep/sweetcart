@@ -1,22 +1,22 @@
 const products=[
-{id:1,name:"Mini Candy",cat:"Toffees",price:250,unit:"Box",qtyLabel:"100 pcs",emoji:"🍬"},
-{id:2,name:"Cash Candy",cat:"Toffees",price:200,unit:"Box",qtyLabel:"50 pcs",emoji:"🍬"},
-{id:3,name:"Eclair",cat:"Toffees",price:240,unit:"Box",qtyLabel:"48 pcs",emoji:"🍬"},
-{id:4,name:"Boom Boom",cat:"Bubbles",price:300,unit:"Box",qtyLabel:"60 pcs",emoji:"🫧"},
-{id:5,name:"Elaichi Bubble",cat:"Bubbles",price:300,unit:"Box",qtyLabel:"60 pcs",emoji:"🫧"},
-{id:6,name:"Fresh Up",cat:"Bubbles",price:300,unit:"Box",qtyLabel:"60 pcs",emoji:"🫧"},
+{id:1,name:"Mini Candy",cat:"Toffees",price:250,unit:"Box",qtyLabel:"100 pcs",emoji:"🍬",image:"images/mini-candy.webp"},
+{id:2,name:"Cash Candy",cat:"Toffees",price:200,unit:"Box",qtyLabel:"50 pcs",emoji:"🍬",image:"images/cash-candy.webp"},
+{id:3,name:"Eclair",cat:"Toffees",price:240,unit:"Box",qtyLabel:"48 pcs",emoji:"🍬",image:"images/eclair.webp"},
+{id:4,name:"Boom Boom",cat:"Bubbles",price:300,unit:"Box",qtyLabel:"60 pcs",emoji:"🫧",image:"images/boom-boom.webp"},
+{id:5,name:"Elaichi Bubble",cat:"Bubbles",price:300,unit:"Box",qtyLabel:"60 pcs",emoji:"🫧",image:"images/elaichi-bubble.webp"},
+{id:6,name:"Fresh Up",cat:"Bubbles",price:300,unit:"Box",qtyLabel:"60 pcs",emoji:"🫧",image:"images/fresh-up.webp"},
 {id:7,name:"Sting",cat:"Bubbles",price:250,unit:"Box",qtyLabel:"50 pcs",emoji:"🫧"},
 {id:8,name:"Salva 10",cat:"Nimko",price:240,unit:"Box",qtyLabel:"24 packs",emoji:"🥜"},
 {id:9,name:"Salva 20",cat:"Nimko",price:240,unit:"Box",qtyLabel:"12 packs",emoji:"🥜"},
-{id:10,name:"Nani Chocolate",cat:"Chocolate",price:1200,unit:"Box",qtyLabel:"24 pcs",emoji:"🍫"},
-{id:11,name:"Spark Chocolate",cat:"Chocolates",price:600,unit:"Box",qtyLabel:"30 pcs",emoji:"🍫"},
+{id:10,name:"Nani Chocolate",cat:"Chocolates",price:1200,unit:"Box",qtyLabel:"24 pcs",emoji:"🍫",image:"images/nani-chocolate.webp"},
+{id:11,name:"Spark Chocolate",cat:"Chocolates",price:600,unit:"Box",qtyLabel:"30 pcs",emoji:"🍫",image:"images/spark-chocolate.webp"},
 {id:12,name:"Choco Stick",cat:"Biscuits",price:300,unit:"Box",qtyLabel:"30 pcs",emoji:"🍪"},
 {id:13,name:"Strawberry Sticks",cat:"Biscuits",price:300,unit:"Box",qtyLabel:"30 pcs",emoji:"🍪"},
-{id:14,name:"Sunflower Seeds",cat:"Snacks",price:120,unit:"Box",qtyLabel:"12 packs",emoji:"🌻"}
+{id:14,name:"Sunflower Seeds",cat:"Snacks",price:120,unit:"Box",qtyLabel:"12 packs",emoji:"🌻",image:"images/sunflower-seeds.webp"}
 ];
 const WA="923041668739";let cart=JSON.parse(localStorage.getItem("sweetcart")||"[]"),active="All";const money=n=>"Rs. "+n.toLocaleString("en-PK");
 function renderFilters(){let cats=["All",...new Set(products.map(p=>p.cat))];document.getElementById("filters").innerHTML=cats.map(c=>'<button class="filter '+(c===active?"active":"")+'" onclick="setCat(\''+c+'\')">'+c+"</button>").join("")}
-function renderProducts(){let list=active==="All"?products:products.filter(p=>p.cat===active);document.getElementById("products").innerHTML=list.map(p=>'<article class="product"><div class="pic">'+p.emoji+'</div><div class="info"><span class="tag">'+p.cat+'</span><h3>'+p.name+'</h3><div class="meta">'+p.unit+' • '+p.qtyLabel+' • Retail</div><div class="price-row"><span class="price">'+money(p.price)+'</span><button class="add" onclick="add('+p.id+')">+ Add</button></div></div></article>').join("")}
+function renderProducts(){let list=active==="All"?products:products.filter(p=>p.cat===active);document.getElementById("products").innerHTML=list.map(p=>'<article class="product"><div class="pic">'+(p.image?'<img src="'+p.image+'" alt="'+p.name+'" loading="lazy">':p.emoji)+'</div><div class="info"><span class="tag">'+p.cat+'</span><h3>'+p.name+'</h3><div class="meta">'+p.unit+' • '+p.qtyLabel+' • Retail</div><div class="price-row"><span class="price">'+money(p.price)+'</span><button class="add" onclick="add('+p.id+')">+ Add</button></div></div></article>').join("")}
 function setCat(c){active=c;renderFilters();renderProducts();document.getElementById("shop").scrollIntoView({behavior:"smooth"})}
 function add(id){let item=cart.find(x=>x.id===id);item?item.qty++:cart.push({id,qty:1});save();openCart()}
 function save(){localStorage.setItem("sweetcart",JSON.stringify(cart));renderCart()}
