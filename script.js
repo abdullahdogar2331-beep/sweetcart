@@ -9,7 +9,7 @@ const products=[
 {id:8,name:"Salva 10",cat:"Nimko",price:240,unit:"Box",qtyLabel:"24 packs",emoji:"🥜"},
 {id:9,name:"Salva 20",cat:"Nimko",price:240,unit:"Box",qtyLabel:"12 packs",emoji:"🥜"},
 {id:10,name:"Nani Chocolate",cat:"Chocolate",price:1200,unit:"Box",qtyLabel:"24 pcs",emoji:"🍫"},
-{id:11,name:"Spark Chocolate",cat:"Chocolate",price:600,unit:"Box",qtyLabel:"30 pcs",emoji:"🍫"},
+{id:11,name:"Spark Chocolate",cat:"Chocolates",price:600,unit:"Box",qtyLabel:"30 pcs",emoji:"🍫"},
 {id:12,name:"Choco Stick",cat:"Biscuits",price:300,unit:"Box",qtyLabel:"30 pcs",emoji:"🍪"},
 {id:13,name:"Strawberry Sticks",cat:"Biscuits",price:300,unit:"Box",qtyLabel:"30 pcs",emoji:"🍪"},
 {id:14,name:"Sunflower Seeds",cat:"Snacks",price:120,unit:"Box",qtyLabel:"12 packs",emoji:"🌻"}
