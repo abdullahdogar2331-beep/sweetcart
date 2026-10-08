@@ -14,7 +14,7 @@ const products=[
 {id:13,name:"Strawberry Sticks",cat:"Biscuits",price:300,unit:"Box",qtyLabel:"30 pcs",emoji:"🍪"},
 {id:14,name:"Sunflower Seeds",cat:"Snacks",price:120,unit:"Box",qtyLabel:"12 packs",emoji:"🌻"}
 ];
-const WA="923001234567";let cart=JSON.parse(localStorage.getItem("sweetcart")||"[]"),active="All";const money=n=>"Rs. "+n.toLocaleString("en-PK");
+const WA="923041668739";let cart=JSON.parse(localStorage.getItem("sweetcart")||"[]"),active="All";const money=n=>"Rs. "+n.toLocaleString("en-PK");
 function renderFilters(){let cats=["All",...new Set(products.map(p=>p.cat))];document.getElementById("filters").innerHTML=cats.map(c=>'<button class="filter '+(c===active?"active":"")+'" onclick="setCat(\''+c+'\')">'+c+"</button>").join("")}
 function renderProducts(){let list=active==="All"?products:products.filter(p=>p.cat===active);document.getElementById("products").innerHTML=list.map(p=>'<article class="product"><div class="pic">'+p.emoji+'</div><div class="info"><span class="tag">'+p.cat+'</span><h3>'+p.name+'</h3><div class="meta">'+p.unit+' • '+p.qtyLabel+' • Retail</div><div class="price-row"><span class="price">'+money(p.price)+'</span><button class="add" onclick="add('+p.id+')">+ Add</button></div></div></article>').join("")}
 function setCat(c){active=c;renderFilters();renderProducts();document.getElementById("shop").scrollIntoView({behavior:"smooth"})}
